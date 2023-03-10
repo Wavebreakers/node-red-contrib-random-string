@@ -2,7 +2,10 @@
   "name": "node-red-contrib-random-string",
   "version": "0.0.1",
   "description": "A Node-RED node that generates a random string from input length & characters",
-  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Wavebreakers/node-red-contrib-random-string.git"
+  },
   "license": "ISC",
   "keywords": ["node-red"],
   "node-red": {
