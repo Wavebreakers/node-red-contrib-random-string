@@ -1,0 +1,58 @@
+<script type="text/html" data-template-name="random-string">
+	<div class="form-row">
+		<label for="node-input-size"><i class="fa fa-arrow-down"></i> Size</label>
+		<input type="number" id="node-input-size" style="width:70%;">
+	</div>
+	<div class="form-row">
+		<label for="node-input-characters"><i class="fa fa-arrow-down"></i> Characters</label>
+		<input type="text" id="node-input-characters" style="width:70%;">
+	</div>
+	<div class="form-row">
+		<label for="node-input-property"><i class="fa fa-sign-out"></i> <span
+				data-i18n="node-red:common.label.property"></span></label>
+		<input type="text" id="node-input-property" style="width:70%;" />
+	</div>
+	<br />
+	<div class="form-row">
+		<label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="node-red:common.label.name"></label>
+		<input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name" style="width:70%;">
+	</div>
+</script>
+
+<script type="text/javascript">
+	RED.nodes.registerType('random-string', {
+		category: 'function',
+		color: '#fdd0a2',
+		defaults: {
+			size: {
+				value: 16,
+				validate: v => v > 0,
+			},
+			characters: {
+				value: '',
+			},
+			property: {
+				value: 'payload',
+				required: true,
+			},
+		},
+		inputs: 1,
+		outputs: 1,
+		icon: 'ui_text.png',
+		label: function () {
+			return this.name || 'random-string';
+		},
+		labelStyle: function () {
+			return this.name ? 'node_label_italic' : '';
+		},
+		oneditprepare: function () {
+			if (this.property === undefined) {
+				$("#node-input-property").val("payload");
+			}
+			$("#node-input-property").typedInput({
+				default: 'msg',
+				types: ['msg']
+			});
+		}
+	});
+</script>
